@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import Header from "./Header";
 import "./AddSubscriber.css";
-
 class AddSusbscriber extends Component {
   constructor() {
     super();
     this.state = {
-      subscribersListToShow: []
+      name: "",
+      phone: ""
     };
   }
 
@@ -17,26 +17,57 @@ class AddSusbscriber extends Component {
   };
 
   render() {
+    const { name, phone } = this.state;
     return (
       <div>
-        <div>
-          <Header heading="Phone Directory" />
+        <Header heading="Add Subscriber" />
+        <div className="component-body-container">
+          <button className="custom-btn">Back</button>
+          <form
+            className="subscriber-form"
+            onSubmit={this.onFormSubmitted.bind(this)}
+          >
+            <label htmlFor="name" className="label-control">
+              Name:{" "}
+            </label>
+            <br />
+            <input
+              id="name"
+              type="text"
+              className="input-control"
+              name="name"
+              onChange={this.inputChangedHandler}
+            />
+            <br />
+            <br />
+            <label htmlFor="phone" className="label-control">
+              Phone:{" "}
+            </label>
+            <br />
+            <input
+              id="phone"
+              type="text"
+              className="input-control"
+              name="phone"
+              onChange={this.inputChangedHandler}
+            />
+            <br />
+            <br />
 
-          <span className="grid-item name-heading">Name</span>
-          <span className="grid-item phone-heading">Phone</span>
-        </div>
-        <div>
-          {this.state.subscribersListToShow.map(sub => {
-            return (
-              <div key={sub.id} className="grid-container">
-                <span className="grid-item">{sub.name}</span>
-                <span className="grid-item">{sub.phone}</span>
-                <span className="grid-item action-btn-container">
-                  <button className="custom-btn delete-btn">Delete</button>
-                </span>
-              </div>
-            );
-          })}
+            <div className="subscriber-info-container"></div>
+            <span className="subscriber-to-add-heading">
+              Subscriber to be added:{" "}
+            </span>
+            <br />
+            <span className="subscriber-info">Name: {name}</span>
+            <br />
+            <span className="subscriber-info">Phone: {phone}</span>
+            <br />
+
+            <button type="submit" className="custom-btn add-btn">
+              Add
+            </button>
+          </form>
         </div>
       </div>
     );
