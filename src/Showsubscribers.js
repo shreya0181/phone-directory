@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Header from "./Header.js";
 import "./App.css";
+import { Link } from "react-router-dom";
 
 class Showsubcribers extends Component {
   render() {
@@ -47,9 +48,9 @@ class Showsubcribers extends Component {
               <br />
             </div>
 
-            <button type="submit" className="custom-btn add-btn">
-              Add
-            </button>
+            <Link to="/add">
+              <button className="custom-btn add-btn">Add</button>
+            </Link>
           </form>
           <div>
             {this.props.subscribersList.map(sub => {
